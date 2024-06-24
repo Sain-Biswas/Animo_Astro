@@ -1,0 +1,108 @@
+---
+import AnimePreviewCard from "../components/AnimePreviewCard.astro";
+import type { HomeComponentInterface } from "../functions/homeComponentFetchers";
+
+interface Props {
+  heading: string;
+  moreLink: string;
+  data: HomeComponentInterface[];
+}
+
+const { data, heading, moreLink } = Astro.props;
+---
+
+<section>
+  <div class="head">
+    <p class="heading font-style-heading">{heading.toUpperCase()}</p>
+    <a href={moreLink} class="more-link"> more &#x2BB3; </a>
+  </div>
+  <ul>
+    {data.map((item) => <AnimePreviewCard data={item} />)}
+  </ul>
+</section>
+
+<style>
+  section {
+    margin-top: 0.5rem;
+    padding: var(--padding);
+
+    --font-heading: 1.5rem;
+    --font-normal: 0.9rem;
+    --item-padding: 0.5rem;
+    --padding: 0.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: var(--item-padding);
+  }
+
+  .heading {
+    font-size: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.125rem;
+  }
+
+  .more-link {
+    display: block;
+    font-size: var(--font-normal);
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    gap: var(--item-padding);
+    grid-template-columns: repeat(2, 1fr);
+
+    list-style: none;
+
+    padding: var(--item-padding);
+  }
+
+  @media (min-width: 768px) {
+    section {
+      --font-heading: 1.5rem;
+      --font-normal: 0.9rem;
+      --item-padding: 0.5rem;
+      --padding: 0.25rem;
+    }
+
+    ul {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      --font-heading: 2rem;
+      --font-normal: 1rem;
+      --item-padding: 0.75rem;
+      --padding: 0.5rem;
+    }
+
+    ul {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    section {
+      --font-heading: 2rem;
+      --font-normal: 1rem;
+      --item-padding: 0.75rem;
+      --padding: 0.5rem;
+    }
+
+    ul {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+</style>

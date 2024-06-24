@@ -1,0 +1,100 @@
+---
+
+---
+
+<nav>
+  <div class="font-style-heading logo">ANIMO</div>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/recent">Recent</a>
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Search..." name="search" id="search" />
+    <a href="/search" id="search-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="search"
+        width="100%"
+        height="100%"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<style>
+  nav {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+
+    padding: var(--padding);
+
+    --font-logo: 1.5rem;
+    --padding: 0.5rem;
+    --font-link: 1rem;
+    --icon-dim: 2rem;
+  }
+  .logo {
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    font-size: var(--font-logo);
+    margin-right: auto;
+  }
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+  .links {
+    font-size: var(--font-link);
+
+    display: none;
+  }
+
+  .search {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .search input {
+    padding: var(--padding);
+    height: var(--icon-dim);
+  }
+  .search a {
+    background-color: var(--card-background);
+    height: var(--icon-dim);
+    width: var(--icon-dim);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
+
+  @media (min-width: 650px) {
+    .links {
+      display: flex;
+      gap: 0.5rem;
+      transition: 0.5s all;
+    }
+    .links a:hover {
+      transform: scale(1.1);
+    }
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById("search") as HTMLInputElement;
+  const searchLink = document.getElementById("search-button");
+
+  searchInput?.addEventListener("keyup", (event) => {
+    if (searchInput.value === "") searchLink?.setAttribute("href", `/search`);
+    else searchLink?.setAttribute("href", `/search?q=${searchInput.value}`);
+  });
+</script>

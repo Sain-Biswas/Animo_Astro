@@ -1,0 +1,24 @@
+---
+import fetchAnimeData from "../functions/fetchAnimeData";
+import Layout from "../layouts/Layout.astro";
+
+const animeID = Astro.url.searchParams.get("n") || "";
+const anime = await fetchAnimeData(animeID);
+---
+
+<Layout title="">
+  {
+    !animeID && (
+      <main>
+        <section>No search params found</section>
+      </main>
+    )
+  }
+  {
+    animeID && (
+      <main>
+        <section>{JSON.stringify(anime)}</section>
+      </main>
+    )
+  }
+</Layout>
