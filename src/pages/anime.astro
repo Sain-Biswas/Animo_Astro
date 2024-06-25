@@ -15,10 +15,36 @@ const anime = await fetchAnimeData(animeID);
     )
   }
   {
-    animeID && (
+    animeID && !anime && (
+      <section>
+        <div>Something went wrong</div>
+      </section>
+    )
+  }
+  {
+    animeID && anime && (
       <main>
-        <section>{JSON.stringify(anime)}</section>
+        <section class="main">
+          <div class="banner">
+            <img
+              src={anime.banner}
+              alt={anime.titleEnglish}
+              width="100%"
+              height="100%"
+              transition:name={`banner-${anime.id}`}
+            />
+          </div>
+        </section>
       </main>
     )
   }
 </Layout>
+
+<style>
+  .main {
+  }
+  .banner {
+  }
+</style>
+
+<script></script>
