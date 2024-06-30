@@ -5,18 +5,18 @@ import type { HomeComponentInterface } from "./homeComponentFetchers";
 const zoro = new ANIME.Zoro();
 
 export interface AnimeDataResponse {
-  id: string;
-  titleEnglish: string;
-  title: string;
-  banner: string | undefined;
-  score: number;
-  type: string;
-  source: string;
-  status: string;
+  id: string; //
+  titleEnglish: string; //
+  title: string; //
+  banner: string | undefined; //
+  score: number; //
+  type: string; //
+  source: string; //
+  status: string; //
   release: string;
-  year: number;
-  season: string;
-  description: string | undefined;
+  year: number; //
+  season: string; //
+  description: string | undefined; //
   episodes: AnimeEpisodes[] | undefined;
   alsoSee: HomeComponentInterface[];
   recommendation: HomeComponentInterface[] | undefined;
